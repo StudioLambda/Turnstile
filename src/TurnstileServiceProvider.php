@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LambdaStudio\Turnstile;
 
 use Illuminate\Support\ServiceProvider;
+use LambdaStudio\Turnstile\Contracts\Turnstile as TurnstileContract;
 
 class TurnstileServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,8 @@ class TurnstileServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/turnstile.php', 'turnstile'
         );
+
+        $this->app->bind(TurnstileContract::class, Turnstile::class);
     }
 
     /**
@@ -30,5 +33,7 @@ class TurnstileServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../config/turnstile.php' => config_path('turnstile.php'),
         ]);
+
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'turnstile');
     }
 }

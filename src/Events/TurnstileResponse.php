@@ -3,13 +3,11 @@
 namespace LambdaStudio\Turnstile\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Http\Client\Response;
-use Illuminate\Queue\SerializesModels;
 
 class TurnstileResponse
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use InteractsWithSockets;
 
     /**
      * Stores the HTTP response.
