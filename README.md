@@ -53,7 +53,6 @@ Just apply the rule to the `cf-turnstile-response` field.
 
 ## Todo
 
-- [ ] Add a middleware equivalent of the rule
 - [ ] Add blade macros
   - [ ] @turnstile(): Adds the turnstile division with the site_key on it.
   - [ ] @turnstyleScript(): Adds the turnstile script tag.
