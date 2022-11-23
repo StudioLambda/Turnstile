@@ -5,13 +5,17 @@ Quick and easy implementation of Turnstile for Laravel.
 ## Example request validation
 
 ```php
-$request->validate([
-    'cf-turnstile-response' => [
-        'required',
-        'string',
-        new \LambdaStudio\Turnstile\Rules\Turnstile(),
-    ],
-]);
+Route::post('/test', function (Request $request) {
+    $request->validate([
+        'cf-turnstile-response' => [
+          'required',
+          'string',
+          app(\LambdaStudio\Turnstile\Rules\ValidTurnstile::class),
+        ],
+    ]);
+
+    dd($request->input('name'));
+});
 ```
 
 Just apply the rule to the `cf-turnstile-response` field.
