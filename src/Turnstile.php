@@ -77,11 +77,16 @@ class Turnstile implements TurnstileContract
     /**
      * Checks the given value against cloudflare's captcha service.
      *
-     * @param  string  $value
+     * @param  null|string  $value
      * @return bool
      */
-    public function check(string $value): bool
+    public function check(?string $value): bool
     {
+        if ($value === null)
+        {
+            return false;
+        }
+        
         $response = $this->request($value);
 
         $this->onResponse($response);
