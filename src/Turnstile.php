@@ -82,11 +82,10 @@ class Turnstile implements TurnstileContract
      */
     public function check(?string $value): bool
     {
-        if ($value === null)
-        {
+        if ($value === null) {
             return false;
         }
-        
+
         $response = $this->request($value);
 
         $this->onResponse($response);
